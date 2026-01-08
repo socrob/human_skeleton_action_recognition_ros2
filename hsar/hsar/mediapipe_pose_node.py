@@ -23,7 +23,8 @@ class MediaPipePoseNode(LifecycleNode):
         super().__init__('mediapipe_pose_node')
 
         # Parameters
-        self.declare_parameter('image_topic', '/k4a/rgb/image_raw')
+        # self.declare_parameter('image_topic', '/k4a/rgb/image_raw')
+        self.declare_parameter('image_topic', '/camera/camera/color/image_raw')
         self.declare_parameter('image_reliability', QoSReliabilityPolicy.BEST_EFFORT)
         self.declare_parameter('live_visualization', True)
 
@@ -133,7 +134,7 @@ class MediaPipePoseNode(LifecycleNode):
             return TransitionCallbackReturn.SUCCESS
         
         except Exception as e:
-            self.get_logger().error(f"[sam2_node] Exception during cleanup: {e}")
+            self.get_logger().error(f"[mediapipe_pose_node] Exception during cleanup: {e}")
             self.get_logger().error(traceback.format_exc())
             return TransitionCallbackReturn.FAILURE
         
@@ -142,55 +143,51 @@ class MediaPipePoseNode(LifecycleNode):
     # ==========================================================
     def on_shutdown(self, state: LifecycleState) -> TransitionCallbackReturn:
         try:
-            self.get_logger().info('[sam2_node] Shutting down...')
+            self.get_logger().info('[mediapipe_pose_node] Shutting down...')
             super().on_cleanup(state)
             return TransitionCallbackReturn.SUCCESS
         except Exception as e:
-            self.get_logger().error(f"[sam2_node] Exception during shutdown: {e}")
+            self.get_logger().error(f"[mediapipe_pose_node] Exception during shutdown: {e}")
             self.get_logger().error(traceback.format_exc())
             return TransitionCallbackReturn.FAILURE
+
 
     # ==========================================================
     # IMAGE CALLBACK (MAIN LOGIC)
     # ==========================================================
     def image_cb(self, msg: Image):
-        self.get_logger().info('[mediapipe_pose_node] Img Received!')
-        try:
-            frame = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
-            self.cam_header = msg.header
+        frame = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
+        self.cam_header = msg.header
 
-            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            results = self.pose.process(rgb)
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.pose.process(rgb)
 
-            pose_msg = HumanPose3D()
-            pose_msg.header.stamp = Clock().now().to_msg()
-            pose_msg.header.frame_id = msg.header.frame_id
+        pose_msg = HumanPose3D()
+        pose_msg.header.stamp = Clock().now().to_msg()
+        pose_msg.header.frame_id = msg.header.frame_id
 
-            if results.pose_world_landmarks:
-                pts = []
-                for lm in results.pose_world_landmarks.landmark:
-                    pts.extend([lm.x, lm.y, lm.z])
-                pose_msg.landmarks = pts
-                pose_msg.valid = True
-            else:
-                pose_msg.landmarks = []
-                pose_msg.valid = False
+        if results.pose_world_landmarks:
+            pts = []
+            for lm in results.pose_world_landmarks.landmark:
+                pts.extend([lm.x, lm.y, lm.z])
+            pose_msg.landmarks = pts
+            pose_msg.valid = True
+        else:
+            pose_msg.landmarks = []
+            pose_msg.valid = False
 
-            self.pose_pub.publish(pose_msg)
+        self.pose_pub.publish(pose_msg)
 
-            if self.live_visualization and results.pose_landmarks:
-                dbg = frame.copy()
-                self.mp_drawing.draw_landmarks(
-                    dbg,
-                    results.pose_landmarks,
-                    self.mp_pose.POSE_CONNECTIONS
-                )
-                dbg_msg = self.bridge.cv2_to_imgmsg(dbg, 'bgr8')
-                dbg_msg.header = pose_msg.header
-                self.debug_pub.publish(dbg_msg)
-
-        except Exception:
-            self.get_logger().error(traceback.format_exc())
+        if self.live_visualization and results.pose_landmarks:
+            dbg = frame.copy()
+            self.mp_drawing.draw_landmarks(
+                dbg,
+                results.pose_landmarks,
+                self.mp_pose.POSE_CONNECTIONS
+            )
+            dbg_msg = self.bridge.cv2_to_imgmsg(dbg, 'bgr8')
+            dbg_msg.header = pose_msg.header
+            self.debug_pub.publish(dbg_msg)
 
 
 def main():
