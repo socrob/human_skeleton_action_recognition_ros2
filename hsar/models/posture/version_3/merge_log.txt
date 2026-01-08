@@ -1,0 +1,42 @@
+(my_hpc) socrob@pal3:scripts $ python merge_posture_pickles.py \
+  --inputs \
+    ../models/version_1/posture_dataset.pkl \
+    ../data/person_sitting_roboflow/person_sitting_roboflow.pkl \
+    ../data/human-activity-detection-hrscm-zsbiq/hrscm_zsbiq_sitting.pkl \
+    ../data/human-activity-detection-hrscm-zsbiq/hrscm_zsbiq_standing.pkl \
+    ../data/lying_down_images/lying_down_images.pkl \
+    ../data/lying_in_bed/lying_in_bed.pkl \
+  --out posture_dataset_merged.pkl
+📦 Merging posture datasets
+
+🔹 Loading: ../models/version_1/posture_dataset.pkl
+   Samples: 127
+🔹 Loading: ../data/person_sitting_roboflow/person_sitting_roboflow.pkl
+   Samples: 382
+🔹 Loading: ../data/human-activity-detection-hrscm-zsbiq/hrscm_zsbiq_sitting.pkl
+   Samples: 924
+🔹 Loading: ../data/human-activity-detection-hrscm-zsbiq/hrscm_zsbiq_standing.pkl
+   Samples: 647
+🔹 Loading: ../data/lying_down_images/lying_down_images.pkl
+   Samples: 66
+🔹 Loading: ../data/lying_in_bed/lying_in_bed.pkl
+   Samples: 58
+
+✅ Merge completed
+Saved to: posture_dataset_merged.pkl
+Total samples: 2204
+Feature dim: 99
+
+📊 Label distribution:
+  0 (standing): 705
+  1 (sitting): 1350
+  2 (lying): 149
+
+📚 Sources:
+  - ../models/version_1/posture_dataset.pkl → 127 samples
+  - ../data/person_sitting_roboflow/person_sitting_roboflow.pkl → 382 samples
+  - ../data/human-activity-detection-hrscm-zsbiq/hrscm_zsbiq_sitting.pkl → 924 samples
+  - ../data/human-activity-detection-hrscm-zsbiq/hrscm_zsbiq_standing.pkl → 647 samples
+  - ../data/lying_down_images/lying_down_images.pkl → 66 samples
+  - ../data/lying_in_bed/lying_in_bed.pkl → 58 samples
+

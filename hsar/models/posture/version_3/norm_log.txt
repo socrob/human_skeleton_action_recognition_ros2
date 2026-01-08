@@ -1,0 +1,6 @@
+(my_hpc) socrob@pal3:scripts $ python3 normalize_posture_dataset.py posture_dataset_merged.pkl --out posture_dataset_merged_norm.pkl
+📦 Loading: posture_dataset_merged.pkl
+✅ Saved: posture_dataset_merged_norm.pkl
+X -> X_norm shape: (2204, 99)
+Scale stats (torso): min=0.325395 max=0.559892 mean=0.446581
+Scale skipped (degenerate torso/hips): 0

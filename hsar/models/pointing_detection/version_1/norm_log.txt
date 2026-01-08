@@ -1,0 +1,5 @@
+(my_hpc) socrob@pal3:pointing_detection $ python ../pointing_direction/normalize_pointing_dataset.py pointing_detection_dataset.pkl   --out pointing_detection_dataset_norm.pkl   --save-stats📦 Loading: pointing_detection_dataset.pkl
+✅ Saved: pointing_detection_dataset_norm.pkl
+X_norm shape: (403, 24)
+Scale stats: min=0.226267 max=0.368373 mean=0.322743
+Scale skipped: 0

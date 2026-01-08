@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd"
+             schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hsar</name>
+  <version>0.1.0</version>
+  <description>ROS 2 LifecycleNode wrapper for real-time Human Skeleton Action Recognition.</description>
+
+  <maintainer email="rodrigo.serra@tecnico.ulisboa.pt">Rodrigo Serra</maintainer>
+  <license>GPL-3</license>
+
+  <!-- Runtime dependencies -->
+  <depend>rclpy</depend>
+  <depend>lifecycle_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>std_srvs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>hsar_msgs</depend>
+
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

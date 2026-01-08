@@ -1,0 +1,6 @@
+(my_hpc) socrob@pal3:pointing $ python3 normalize_pointing_dataset.py pointing_dataset.pkl   --out pointing_dataset_norm.pkl   --save-stats
+📦 Loading: pointing_dataset.pkl
+✅ Saved: pointing_dataset_norm.pkl
+X_norm shape: (218, 24)
+Scale stats: min=0.280520 max=0.368044 mean=0.325258
+Scale skipped: 0

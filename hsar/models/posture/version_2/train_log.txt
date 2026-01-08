@@ -1,0 +1,117 @@
+(my_hpc) socrob@pal3:scripts $ python train_mlp.py 
+📦 Loading dataset...
+X shape: (127, 99)
+y shape: (127,)
+🚀 Training started
+Epoch 001 | Train loss: 0.9677 | Val loss: 0.9507
+Epoch 002 | Train loss: 0.5954 | Val loss: 0.7211
+Epoch 003 | Train loss: 0.3621 | Val loss: 0.4840
+Epoch 004 | Train loss: 0.2866 | Val loss: 0.3034
+Epoch 005 | Train loss: 0.2452 | Val loss: 0.1949
+Epoch 006 | Train loss: 0.2280 | Val loss: 0.1373
+Epoch 007 | Train loss: 0.2035 | Val loss: 0.1067
+Epoch 008 | Train loss: 0.1264 | Val loss: 0.0910
+Epoch 009 | Train loss: 0.1049 | Val loss: 0.0784
+Epoch 010 | Train loss: 0.1084 | Val loss: 0.0659
+Epoch 011 | Train loss: 0.0687 | Val loss: 0.0565
+Epoch 012 | Train loss: 0.0640 | Val loss: 0.0499
+Epoch 013 | Train loss: 0.0798 | Val loss: 0.0450
+Epoch 014 | Train loss: 0.0782 | Val loss: 0.0394
+Epoch 015 | Train loss: 0.0521 | Val loss: 0.0350
+Epoch 016 | Train loss: 0.0581 | Val loss: 0.0317
+Epoch 017 | Train loss: 0.0535 | Val loss: 0.0280
+Epoch 018 | Train loss: 0.0499 | Val loss: 0.0265
+Epoch 019 | Train loss: 0.0470 | Val loss: 0.0250
+Epoch 020 | Train loss: 0.0376 | Val loss: 0.0240
+Epoch 021 | Train loss: 0.0326 | Val loss: 0.0251
+Epoch 022 | Train loss: 0.0297 | Val loss: 0.0247
+Epoch 023 | Train loss: 0.0708 | Val loss: 0.0202
+Epoch 024 | Train loss: 0.0434 | Val loss: 0.0179
+Epoch 025 | Train loss: 0.0370 | Val loss: 0.0173
+Epoch 026 | Train loss: 0.0270 | Val loss: 0.0192
+Epoch 027 | Train loss: 0.0380 | Val loss: 0.0186
+Epoch 028 | Train loss: 0.0230 | Val loss: 0.0172
+Epoch 029 | Train loss: 0.0193 | Val loss: 0.0152
+Epoch 030 | Train loss: 0.0230 | Val loss: 0.0134
+Epoch 031 | Train loss: 0.0138 | Val loss: 0.0142
+Epoch 032 | Train loss: 0.0174 | Val loss: 0.0140
+Epoch 033 | Train loss: 0.0463 | Val loss: 0.0124
+Epoch 034 | Train loss: 0.0116 | Val loss: 0.0130
+Epoch 035 | Train loss: 0.0233 | Val loss: 0.0109
+Epoch 036 | Train loss: 0.0170 | Val loss: 0.0099
+Epoch 037 | Train loss: 0.0186 | Val loss: 0.0096
+Epoch 038 | Train loss: 0.0342 | Val loss: 0.0090
+Epoch 039 | Train loss: 0.0182 | Val loss: 0.0088
+Epoch 040 | Train loss: 0.0071 | Val loss: 0.0102
+Epoch 041 | Train loss: 0.0111 | Val loss: 0.0110
+Epoch 042 | Train loss: 0.0232 | Val loss: 0.0113
+Epoch 043 | Train loss: 0.0189 | Val loss: 0.0118
+Epoch 044 | Train loss: 0.0138 | Val loss: 0.0101
+Epoch 045 | Train loss: 0.0073 | Val loss: 0.0089
+Epoch 046 | Train loss: 0.0157 | Val loss: 0.0065
+Epoch 047 | Train loss: 0.0092 | Val loss: 0.0062
+Epoch 048 | Train loss: 0.0074 | Val loss: 0.0066
+Epoch 049 | Train loss: 0.0509 | Val loss: 0.0061
+Epoch 050 | Train loss: 0.0080 | Val loss: 0.0075
+Epoch 051 | Train loss: 0.0110 | Val loss: 0.0091
+Epoch 052 | Train loss: 0.0123 | Val loss: 0.0099
+Epoch 053 | Train loss: 0.0655 | Val loss: 0.0082
+Epoch 054 | Train loss: 0.0100 | Val loss: 0.0085
+Epoch 055 | Train loss: 0.0177 | Val loss: 0.0090
+Epoch 056 | Train loss: 0.0082 | Val loss: 0.0100
+Epoch 057 | Train loss: 0.0229 | Val loss: 0.0081
+Epoch 058 | Train loss: 0.0194 | Val loss: 0.0068
+Epoch 059 | Train loss: 0.0083 | Val loss: 0.0065
+Epoch 060 | Train loss: 0.0109 | Val loss: 0.0058
+Epoch 061 | Train loss: 0.0333 | Val loss: 0.0048
+Epoch 062 | Train loss: 0.0099 | Val loss: 0.0045
+Epoch 063 | Train loss: 0.0064 | Val loss: 0.0047
+Epoch 064 | Train loss: 0.0188 | Val loss: 0.0051
+Epoch 065 | Train loss: 0.0052 | Val loss: 0.0058
+Epoch 066 | Train loss: 0.0162 | Val loss: 0.0067
+Epoch 067 | Train loss: 0.0071 | Val loss: 0.0068
+Epoch 068 | Train loss: 0.0318 | Val loss: 0.0045
+Epoch 069 | Train loss: 0.0141 | Val loss: 0.0036
+Epoch 070 | Train loss: 0.0158 | Val loss: 0.0029
+Epoch 071 | Train loss: 0.0126 | Val loss: 0.0024
+Epoch 072 | Train loss: 0.0036 | Val loss: 0.0027
+Epoch 073 | Train loss: 0.0069 | Val loss: 0.0024
+Epoch 074 | Train loss: 0.0212 | Val loss: 0.0025
+Epoch 075 | Train loss: 0.0046 | Val loss: 0.0032
+Epoch 076 | Train loss: 0.0053 | Val loss: 0.0041
+Epoch 077 | Train loss: 0.0052 | Val loss: 0.0038
+Epoch 078 | Train loss: 0.0304 | Val loss: 0.0044
+Epoch 079 | Train loss: 0.0059 | Val loss: 0.0044
+Epoch 080 | Train loss: 0.0111 | Val loss: 0.0048
+Epoch 081 | Train loss: 0.0060 | Val loss: 0.0051
+Epoch 082 | Train loss: 0.0323 | Val loss: 0.0049
+Epoch 083 | Train loss: 0.0042 | Val loss: 0.0054
+Epoch 084 | Train loss: 0.0113 | Val loss: 0.0052
+Epoch 085 | Train loss: 0.0155 | Val loss: 0.0039
+Epoch 086 | Train loss: 0.0086 | Val loss: 0.0036
+Epoch 087 | Train loss: 0.0072 | Val loss: 0.0030
+Epoch 088 | Train loss: 0.0141 | Val loss: 0.0033
+Epoch 089 | Train loss: 0.0030 | Val loss: 0.0037
+Epoch 090 | Train loss: 0.0055 | Val loss: 0.0041
+Epoch 091 | Train loss: 0.0130 | Val loss: 0.0039
+Epoch 092 | Train loss: 0.0033 | Val loss: 0.0044
+Epoch 093 | Train loss: 0.0063 | Val loss: 0.0047
+⏹ Early stopping
+
+📊 Validation results:
+              precision    recall  f1-score   support
+
+    standing       1.00      1.00      1.00        15
+     sitting       1.00      1.00      1.00        11
+       lying       1.00      1.00      1.00         6
+
+    accuracy                           1.00        32
+   macro avg       1.00      1.00      1.00        32
+weighted avg       1.00      1.00      1.00        32
+
+Confusion matrix:
+[[15  0  0]
+ [ 0 11  0]
+ [ 0  0  6]]
+
+✅ Best model saved to posture_mlp_norm.pt
