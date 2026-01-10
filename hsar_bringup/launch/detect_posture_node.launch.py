@@ -9,8 +9,8 @@ from launch_ros.actions import LifecycleNode
 def generate_launch_description():
     namespace = LaunchConfiguration("namespace")
     mp_topic = LaunchConfiguration("mp_topic")
-    model_path = LaunchConfiguration("model_path")
-    scaler_path = LaunchConfiguration("scaler_path")
+    model_name = LaunchConfiguration("model_name")
+    model_scaler_name = LaunchConfiguration("model_scaler_name")
     use_geom_norm = LaunchConfiguration("use_geom_norm")
     device = LaunchConfiguration("device")
     smooth_window = LaunchConfiguration("smooth_window")
@@ -28,12 +28,12 @@ def generate_launch_description():
             description="Mediapipe pose topic"
         ),
         DeclareLaunchArgument(
-            "model_path",
+            "model_name",
             default_value="posture_mlp_merged_norm.pt",
             description="Posture model path"
         ),
         DeclareLaunchArgument(
-            "scaler_path",
+            "model_scaler_name",
             default_value="posture_scaler_mereged_norm.pkl",
             description="Posture model scaler path"
         ),
@@ -64,8 +64,8 @@ def generate_launch_description():
             namespace=namespace,
             parameters=[{
                 "mp_topic": mp_topic,
-                "model_path": model_path,
-                "scaler_path": scaler_path,
+                "model_name": model_name,
+                "model_scaler_name": model_scaler_name,
                 "use_geom_norm": use_geom_norm,
                 "device": device,
                 "smooth_window": smooth_window,

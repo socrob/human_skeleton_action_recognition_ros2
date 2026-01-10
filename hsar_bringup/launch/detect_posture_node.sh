@@ -16,10 +16,11 @@ fi
 echo "🚀 Launching Posture detection node..."
 ros2 launch hsar_bringup detect_posture_node.launch.py \
     namespace:=detect_posture_node \
-    model_path:=posture_mlp_merged_norm.pt \
-    scaler_path:=posture_scaler_mereged_norm.pkl \
-    use_geom_norm:=2 \
+    mp_topic:=/mediapipe_pose_node/human_pose_3d \
+    model_name:=posture_mlp_merged_norm.pt \
+    model_scaler_name:=posture_scaler_mereged_norm.pkl \
     use_geom_norm:=True \
+    device:=cuda \
     smooth_window:=15 \
     conf_threshold:=0.6
 

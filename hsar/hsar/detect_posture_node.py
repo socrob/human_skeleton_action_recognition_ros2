@@ -23,8 +23,8 @@ class DetectPostureNode(LifecycleNode):
 
         # Declare parameters
         self.declare_parameter('mp_topic', '/mediapipe_pose_node/human_pose_3d')
-        self.declare_parameter('model_path', 'posture_mlp_merged_norm.pt')
-        self.declare_parameter('scaler_path', 'posture_scaler_mereged_norm.pkl')
+        self.declare_parameter('model_name', 'posture_mlp_merged_norm.pt')
+        self.declare_parameter('model_scaler_name', 'posture_scaler_mereged_norm.pkl')
         self.declare_parameter('use_geom_norm', True)
         self.declare_parameter('device', 'cuda')
         self.declare_parameter('smooth_window', 15)
@@ -50,24 +50,24 @@ class DetectPostureNode(LifecycleNode):
 
             # Load parameters (typed)
             self.mp_topic = self.get_parameter('mp_topic').get_parameter_value().string_value
-            self.model_path = self.get_parameter('model_path').get_parameter_value().string_value
-            self.scaler_path = self.get_parameter('scaler_path').get_parameter_value().string_value
+            self.model_name = self.get_parameter('model_name').get_parameter_value().string_value
+            self.model_scaler_name = self.get_parameter('model_scaler_name').get_parameter_value().string_value
             self.use_geom_norm = self.get_parameter('use_geom_norm').get_parameter_value().bool_value
             self.device = self.get_parameter('device').get_parameter_value().string_value
             self.smooth_window = self.get_parameter('smooth_window').get_parameter_value().integer_value
             self.conf_threshold = self.get_parameter('conf_threshold').get_parameter_value().double_value
 
-            self.get_logger().info(f'[detect_posture_node] Using model: {self.model_path}')
+            self.get_logger().info(f'[detect_posture_node] Using model: {self.model_name}')
             
             # Get models
             self.model_path = os.path.join(
                 self.assets_dir,
-                "models/posture/version_3/" + self.model_path
+                "models/posture/version_3/" + self.model_name
             )
             
             self.scaler_path = os.path.join(
                 self.assets_dir,
-                "models/posture/version_3/" + self.scaler_path
+                "models/posture/version_3/" + self.model_scaler_name
             )
 
             # Setup Torch device
