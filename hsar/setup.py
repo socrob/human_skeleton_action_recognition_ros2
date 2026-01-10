@@ -22,6 +22,7 @@ setup(
     entry_points={
         "console_scripts": [
             "detect_posture_node = hsar.detect_posture_node:main",
+            "hsar_models = hsar.hsar_models:main",
             "mediapipe_pose_node = hsar.mediapipe_pose_node:main",
         ],
     },

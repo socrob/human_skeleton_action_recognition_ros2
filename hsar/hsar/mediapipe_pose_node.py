@@ -158,10 +158,9 @@ class MediaPipePoseNode(LifecycleNode):
     def image_cb(self, msg: Image):
         frame = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
         self.cam_header = msg.header
-
+        
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = self.pose.process(rgb)
-
         pose_msg = HumanPose3D()
         pose_msg.header.stamp = Clock().now().to_msg()
         pose_msg.header.frame_id = msg.header.frame_id
@@ -175,16 +174,18 @@ class MediaPipePoseNode(LifecycleNode):
         else:
             pose_msg.landmarks = []
             pose_msg.valid = False
-
         self.pose_pub.publish(pose_msg)
 
-        if self.live_visualization and results.pose_landmarks:
+        if self.live_visualization:
             dbg = frame.copy()
-            self.mp_drawing.draw_landmarks(
-                dbg,
-                results.pose_landmarks,
-                self.mp_pose.POSE_CONNECTIONS
-            )
+            
+            if results.pose_landmarks:
+                self.mp_drawing.draw_landmarks(
+                    dbg,
+                    results.pose_landmarks,
+                    self.mp_pose.POSE_CONNECTIONS
+                )
+            
             dbg_msg = self.bridge.cv2_to_imgmsg(dbg, 'bgr8')
             dbg_msg.header = pose_msg.header
             self.debug_pub.publish(dbg_msg)

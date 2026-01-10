@@ -19,7 +19,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 # Activate venv
-VENV_PATH=~/venvs/sam2_realtime_venv/bin/activate
+VENV_PATH=~/venvs/my_hpc/bin/activate
 if [ -f "$VENV_PATH" ]; then
     echo "✅ Activating virtual environment from $VENV_PATH"
     source "$VENV_PATH"
@@ -28,14 +28,6 @@ else
     exit 1
 fi
 
-# Check assets path
-if [ -z "$SAM2_ASSETS_DIR" ]; then
-    echo "❌ SAM2_ASSETS_DIR is not set. Please export it first."
-    exit 1
-fi
-
-echo "📂 Changing directory to SAM2 assets: $SAM2_ASSETS_DIR"
-cd "$SAM2_ASSETS_DIR"
 
 # Set image topics based on camera type
 if [ "$CAMERA_TYPE" == "azure" ]; then
@@ -52,17 +44,15 @@ else
 fi
 
 # === RUN NODE ===
-echo "🚀 Launching SAM2 node using $CAMERA_TYPE topics..."
-ros2 launch sam2_realtime_bringup sam2_realtime_node.launch.py \
-    namespace:=sam2 \
+echo "🚀 Launching Mediapipe node using $CAMERA_TYPE topics..."
+ros2 launch hsar_bringup mediapipe_pose_node.launch.py \
+    namespace:=mediapipe_pose_node \
     image_topic:=${IMAGE_TOPIC} \
     image_reliability:=2 \
-    model_cfg:=configs/sam2.1/sam2.1_hiera_s.yaml \
-    checkpoint:=checkpoints/sam2.1_hiera_small.pt \
     live_visualization:=True
 
 
 
 # USAGE EXAMPLE
-# ./sam2_realtime_node.sh --camera azure
-# ./sam2_realtime_node.sh --camera realsense
+# ./mediapipe_pose_node.sh --camera azure
+# ./mediapipe_pose_node.sh --camera realsense

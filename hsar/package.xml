@@ -16,6 +16,8 @@
   <depend>std_srvs</depend>
   <depend>sensor_msgs</depend>
   <depend>hsar_msgs</depend>
+  
+  <exec_depend>hsar_assets</exec_depend>
 
 
   <export>
