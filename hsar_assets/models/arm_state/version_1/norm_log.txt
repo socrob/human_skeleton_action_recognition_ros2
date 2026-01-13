@@ -1,0 +1,6 @@
+(my_hpc) socrob@pal3:arm_state $ python ../pointing_direction/normalize_pointing_dataset.py arm_state_dataset.pkl   --out arm_state_dataset_norm.pkl   --save-stats
+📦 Loading: arm_state_dataset.pkl
+✅ Saved: arm_state_dataset_norm.pkl
+X_norm shape: (435, 24)
+Scale stats: min=0.226267 max=0.368373 mean=0.326975
+Scale skipped: 0

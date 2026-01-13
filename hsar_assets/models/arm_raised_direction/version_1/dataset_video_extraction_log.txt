@@ -1,0 +1,5 @@
+Arm raised direction dataset created
+Samples: 48
+  0 (left): 24
+  1 (right): 24
+Saved to: arm_raised_direction_dataset.pkl

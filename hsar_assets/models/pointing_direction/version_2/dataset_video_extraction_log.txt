@@ -1,0 +1,4 @@
+Pointing dataset created
+Samples: 285
+Input dim: 24
+Saved to: pointing_dataset.pkl

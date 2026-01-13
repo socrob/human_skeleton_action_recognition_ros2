@@ -1,0 +1,8 @@
+(my_hpc) socrob@pal3:arm_raised_direction $ python ../pointing_direction/normalize_pointing_dataset.py arm_raised_direction_dataset.pkl \
+  --out arm_raised_direction_dataset_norm.pkl \
+  --save-stats
+📦 Loading: arm_raised_direction_dataset.pkl
+✅ Saved: arm_raised_direction_dataset_norm.pkl
+X_norm shape: (48, 24)
+Scale stats: min=0.286646 max=0.344947 mean=0.319305
+Scale skipped: 0

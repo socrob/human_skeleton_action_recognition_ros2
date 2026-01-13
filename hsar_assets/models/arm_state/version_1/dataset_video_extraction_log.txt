@@ -1,0 +1,6 @@
+Arm-state dataset created
+Samples: 435
+  0 (arms_down): 102
+  1 (pointing): 285
+  2 (arm_raised): 48
+Saved to: arm_state_dataset.pkl
