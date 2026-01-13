@@ -285,7 +285,7 @@ class DetectArmStateNode(LifecycleNode):
     def normalize_arm_pose(self, x24):
         k = x24.reshape(8, 3).astype(np.float32)
 
-        center = 0.5 * (k[self.self.idx_ls] + k[self.idx_rs])
+        center = 0.5 * (k[self.idx_ls] + k[self.idx_rs])
         k -= center
 
         v = k[self.idx_rs] - k[self.idx_ls]
@@ -338,8 +338,16 @@ class DetectArmStateNode(LifecycleNode):
         return pred, conf, probs
 
 
+    def extract_arm_subset(self, landmarks_99):
+        pts = []
+        for idx in self.landmark_idxs:
+            base = 3 * idx
+            pts.extend(landmarks_99[base:base + 3])
+        return np.array(pts, dtype=np.float32)
+
 
     def mp_cb(self, msg: HumanPose3D):
+        probs = []
         if not msg.valid:
             self.state_buffer.clear()
             self.last_label = "unknown"
@@ -347,8 +355,8 @@ class DetectArmStateNode(LifecycleNode):
             confidence = 0.0
             probs = []
         else:
-            pose_vec = np.array(msg.landmarks, dtype=np.float32)
-            x_norm = self.normalize_arm_pose(pose_vec)
+            pose_vec_24 = self.extract_arm_subset(msg.landmarks)
+            x_norm = self.normalize_arm_pose(pose_vec_24)
 
             if x_norm is None:
                 final_label = "unknown"
