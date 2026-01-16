@@ -71,6 +71,11 @@ class MediaPipePoseNode(LifecycleNode):
     def on_activate(self, state: LifecycleState) -> TransitionCallbackReturn:
         try:
             self.get_logger().info('[mediapipe_pose_node] Activating...')
+            
+            # self.get_logger().error(f"mediapipe module: {mp}")
+            # self.get_logger().error(f"mediapipe file: {getattr(mp, '__file__', 'NO FILE')}")
+            # self.get_logger().error(f"mediapipe dir: {dir(mp)}")
+
 
             self.mp_pose = mp.solutions.pose
             self.mp_drawing = mp.solutions.drawing_utils
