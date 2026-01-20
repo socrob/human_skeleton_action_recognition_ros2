@@ -174,7 +174,7 @@ class DetectPostureNode(LifecycleNode):
     def on_shutdown(self, state: LifecycleState) -> TransitionCallbackReturn:
         try:
             self.get_logger().info('[detect_posture_node] Shutting down...')
-            super().on_cleanup(state)
+            super().on_shutdown(state)
             return TransitionCallbackReturn.SUCCESS
         except Exception as e:
             self.get_logger().error(f"[detect_posture_node] Exception during shutdown: {e}")
