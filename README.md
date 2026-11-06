@@ -86,7 +86,15 @@ ros2 launch hsar_bringup mediapipe_pose_node.launch.py
 
 ## Example Launch Commands
 
-Launch the MediaPipe pose node:
+Launch the whole pipeline (pose, posture and arm state) in one namespace, `hsar` by default:
+
+```bash
+ros2 launch hsar_bringup hsar.launch.py image_topic:=/camera/camera/color/image_raw
+```
+
+The topics are then `/hsar/human_pose_3d`, `/hsar/mediapipe_pose_debug`, `/hsar/posture` and `/hsar/arm_state`, and both classifiers read the pose from `/hsar/human_pose_3d`. `launch_posture:=False` or `launch_arm_state:=False` leaves a classifier out, and the per-node arguments below (models, thresholds, device, ...) can be passed too.
+
+Launch the MediaPipe pose node alone:
 
 ```bash
 ros2 launch hsar_bringup mediapipe_pose_node.launch.py
@@ -107,6 +115,7 @@ ros2 launch hsar_bringup detect_arm_state_node.launch.py
 ## Notes on Launch Files
 
 The `hsar_bringup` package includes these launch definitions:
+- `hsar.launch.py`: the three nodes below in one namespace, with the classifiers connected to the pose node
 - `mediapipe_pose_node.launch.py`
 - `detect_posture_node.launch.py`
 - `detect_arm_state_node.launch.py`
